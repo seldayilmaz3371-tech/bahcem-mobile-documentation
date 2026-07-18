@@ -3,39 +3,30 @@
 | Alan | Değer |
 |---|---|
 | **Project** | Bahçem Mobile |
-| **Module** | Modül 6 — AI Altyapısı |
-| **Sprint** | 7.3 |
-| **Feature** | AI Asistan Mobil UX + AI Davranış Doğrulaması + Beta/Release Hazırlığı |
-| **Test Sonucu** | ✅ 484/484 başarılı (+5 yeni — mobil UX testleri) |
-| **Build** | ✅ Başarılı — ana bundle 395.82kB, AI chunk 346.40kB (değişmedi) |
-| **Lint** | ✅ 0 uyarı / 0 hata (183 dosya, 103 kural) |
-| **Cap Sync** | ✅ Başarılı (9 native plugin, değişmedi) |
-| **Tarih** | 2026-07-17 |
-| **Git Commit** | `98edca6` |
-| **ADR** | [0024 — AI Architecture Decisions](docs/adr/0024-ai-architecture-decisions.md), [0025 — Beta Release Strategy (taslak)](docs/adr/0025-beta-release-strategy.md) |
+| **Module** | Modül 3 (Fotoğraf altyapısı — GERÇEKTEN zaten mevcut) / Gelecekteki Modül 9 (Fotoğraf Analizi — tasarım aşaması) |
+| **Sprint** | 9.1 |
+| **Feature** | Fotoğraf Altyapısı Mimari Analizi + AI Analiz Veri Modeli Tasarımı (SAF DOKÜMANTASYON) |
+| **App Version** | `0.1.0-beta.1` (değişmedi) |
+| **Test/Build/Lint/Cap Sync Durumu** | **Bu sprintte kod DEĞİŞMEDİĞİ için `npm run test`/`build`/`lint`/`cap sync` YENİDEN ÇALIŞTIRILMADI** — Sprint 8.5'in sonucu (538/538 test, temiz build/lint, 9 plugin) hâlâ geçerlidir. Her belge değişikliğinden sonra `tsc -b` GERÇEKTEN çalıştırıldı (kod dokunulmadığının kanıtı). |
+| **Tarih** | 2026-07-18 |
+| **Git Commit** | `96d01fa` |
+| **ADR** | Yeni ADR gerekmedi — hiçbir yeni mimari karar alınmadı, sadece mevcut mimarinin analizi + gelecekteki bir tasarımın seçenekleri sunuldu |
 
-## Gerçek Cihaz Doğrulaması (Sprint 7.2'de Kullanıcı Tarafından Onaylandı)
+## 🔴 Kritik Bulgu — Bu Sprintte Kod Hiç Değişmedi
 
-APK üretildi, Android cihaza kuruldu, çöküş gözlenmedi. Parsel listesi/SQLite/AI Ayarları/Secure Storage/AI ekranı/Galeri fotoğraf seçimi doğrulandı.
+Kod öncesi zorunlu analiz, Sprint 9.1'in istediği **"Fotoğraf modülünün temel altyapısı"nın Modül 3'ten (Sprint 3.6-3.7) beri zaten tam ve olgun bir şekilde mevcut olduğunu** kanıtladı. Bu, varsayılmadı — 7 önceliğin her biri gerçek dosyalardan (`IPhotoRepository`, `native/filesystem.ts`, `photos` şeması) tek tek doğrulandı.
+
+## Yeni Belgeler (Bu Sprint)
+
+- `docs/sprint-9.1-photo-infrastructure-analysis.md` — mevcut altyapının 7 öncelikle karşılaştırılması, gerçek kod kanıtlarıyla.
+- `docs/photo-ai-analysis-data-model-design.md` — AI analiz sonucunun gelecekte nereye kaydedileceğine dair 3 seçenekli tasarım (kod yok).
 
 ## Frozen Modules
 
 | Modül | Durum |
 |---|---|
-| Modül 1 — Altyapı | ✅ FROZEN |
-| Modül 2 — Parseller + Ağaçlar | ✅ FROZEN |
-| Modül 3 — Gözlemler + Fotoğraflar | ✅ FROZEN |
-| Modül 4 — Router + Finans | ✅ FROZEN |
-| Modül 5 — Bakım Yönetimi | ✅ FROZEN |
-| Sprint 6 — AI Altyapısı (kod) | ✅ Onaylandı |
-| Sprint 7.1 — Navigasyon + Bundle Optimizasyonu | ✅ Onaylandı |
-| Sprint 7.2 — UX/Kalite Son Kontrolleri | ✅ Onaylandı, **gerçek cihazda doğrulandı** |
-| Sprint 7.3 — Mobil UX + AI Doğrulaması + Beta Hazırlığı | 🟡 Bu teslimat |
-
-## Kısa Değişiklik Özeti
-
-**AI Asistan mobil UX'i tamamen yenilendi:** çok satırlı otomatik büyüyen textarea (4-10 satır), sohbet balonları (kullanıcı sağda/AI solda), gönderim sırasında spinner+"Düşünüyor..." göstergesi, `android:windowSoftInputMode="adjustResize"` (gerçek bulgu — hiç yapılandırılmamıştı). **AI mimarisi hiç değişmedi.**
-
-**AI davranışı kod seviyesinde doğrulandı:** Gemini API'ye gerçekten istek gittiği, `gemini-2.5-flash` modelinin kullanıldığı, hiçbir fallback/sahte cevap mekanizması olmadığı kanıtlandı. Dürüstçe belirtilen sınır: gerçek Logcat/cihaz erişimi bu ortamda mümkün değil, analiz kod seviyesinde yapıldı.
-
-**Beta/Release hazırlığı:** Versiyon önerileri (`sprint-7.3-version-proposal.md`) ve ADR 0025 (Beta Release Strategy) hazırlandı — **hiçbir dosya değiştirilmedi**, hepsi kullanıcı onayı bekliyor.
+| Modül 1-5 | ✅ FROZEN |
+| Sprint 6-8.5 | ✅ Onaylandı |
+| Modül 7 — Hasat | ✅ Onaylandı |
+| Modül 8 — Dashboard | ✅ Onaylandı |
+| Sprint 9.1 (analiz+tasarım) | 🟡 Bu teslimat |
